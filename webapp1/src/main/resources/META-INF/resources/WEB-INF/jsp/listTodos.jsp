@@ -6,19 +6,18 @@
         <title>hello-html-jsp</title>
     </head>
     <body>
-        <p>Welcome ${name}</p>
-        <hr>
-        <h1>Your todos</h1>
-        <table>
-            <thead>
+        <div class="container">
+            <h1>Your todos</h1>
+            <table class="table">
+                <thead>
                 <tr>
                     <th>id</th>
                     <th>Description</th>
                     <th>Target Date</th>
                     <th>Is Done?</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <c:forEach items="${todos}" var="todo">
                     <tr>
                         <td>${todo.id}</td>
@@ -27,10 +26,11 @@
                         <td>${todo.done}</td>
                     </tr>
                 </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
         <script src="webjars\bootstrap\5.1.3\js\bootstrap.min.js
-"></script>
+        "></script>
     <script src="webjars\jquery\3.6.0\jquery.min.js"></script>
     </body>
 </html>
