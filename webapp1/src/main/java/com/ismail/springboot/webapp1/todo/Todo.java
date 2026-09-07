@@ -1,11 +1,14 @@
 package com.ismail.springboot.webapp1.todo;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
     private int id;
     private String username;
-    private String Description;
+    @Size(min = 10, message = "Enter at least 10 characters")
+    private String description;
     private LocalDate targetDate;
     private boolean done;
 
@@ -13,7 +16,7 @@ public class Todo {
         this.id = id;
         this.done = done;
         this.targetDate = targetDate;
-        Description = description;
+        this.description = description;
         this.username = username;
     }
 
@@ -34,11 +37,11 @@ public class Todo {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public LocalDate getTargetDate() {
@@ -62,7 +65,7 @@ public class Todo {
         return "Todo{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", Description='" + Description + '\'' +
+                ", Description='" + description + '\'' +
                 ", targetDate=" + targetDate +
                 ", done=" + done +
                 '}';
