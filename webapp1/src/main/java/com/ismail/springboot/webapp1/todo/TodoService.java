@@ -1,5 +1,6 @@
 package com.ismail.springboot.webapp1.todo;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ public class TodoService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, false, LocalDate.now().plusYears(1), "Learn AWS", "Ismail"));
+        todos.add(new Todo(++todosCount, false, LocalDate.now().plusYears(1), "Get AWS Certified", "Ismail"));
         todos.add(new Todo(++todosCount, false, LocalDate.now().plusYears(2), "Learn Azure", "Ismail"));
         todos.add(new Todo(++todosCount, false, LocalDate.now().plusYears(3), "Learn FullStack dev", "Ismail"));
     }
@@ -32,5 +33,17 @@ public class TodoService {
     public void deleteById(int id) {
         Predicate<? super Todo> predicate = todo -> todo.getId() == id;
         todos.removeIf(predicate);
+    }
+
+    public Todo findByID(int id) {
+        Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+        Todo todo = todos.stream().filter(predicate).findFirst().get();
+        return todo;
+    }
+
+    public void updateTodo(@Valid Todo todo) {
+        int id = todo.getId();
+        deleteById(todo.getId());
+        todos.add(todo);
     }
 }
