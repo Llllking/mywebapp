@@ -18,6 +18,10 @@ public class Todo {
     private LocalDate targetDate;
     private boolean done;
 
+    public Todo(){
+
+    }
+
     public Todo(int id, boolean done, LocalDate targetDate, String description, String username) {
         this.id = id;
         this.done = done;
